@@ -9,9 +9,23 @@ class NewsService {
     }
 
     /**
-     * Get all news
+     * @desc Get all news
+     * @param {function} callback - callback 
+     * @param {string} country -  country
+     * @param {string} category - category
      */
     getTopHeadlinesNews(callback, category = this.category, country = this.country) {
         http.get(`${this.apiUrl}/top-headlines?country=${country}&category=${category}&apiKey=${this.apiKey}`, callback);
+    }
+
+    /**
+     * @desc Get news from search 
+     * @param {function} callback - callback 
+     * @param {string} country -  country
+     * @param {string} category - category
+     */
+    //1-сформировал запрос на адрес q
+    getSearchNews(callback, q) {
+        http.get(`${this.apiUrl}/everything?q=${q}&apiKey=${this.apiKey}`, callback);
     }
 }
