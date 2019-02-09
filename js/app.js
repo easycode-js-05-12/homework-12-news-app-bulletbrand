@@ -5,7 +5,7 @@ const alert = new  UIalertMessage();
 const form = document.forms['newsControlForm'];
 const countrySelect = form['country'];
 const categorySelect = form['category'];
-
+const search = form['search'];
 /**
  * @desc Works when we change counrty or category 
  * @param {object} - event
@@ -32,11 +32,6 @@ function onSelectChange(e) {
 // Event listeners
 countrySelect.addEventListener('change', onSelectChange);
 categorySelect.addEventListener('change', onSelectChange);
-
-
-//search
-//UI
-const search = form['search'];
 
 
 search.addEventListener('keypress',  mainFunc); //при нажатии на клавишу каждый раз вызывается фция с новым запросом в ней

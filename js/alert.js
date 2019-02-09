@@ -1,23 +1,35 @@
-const alertContainer = document.querySelector('.news-wrap .row');
-
 class UIalertMessage {
 
     constructor() {
-        this.newsContainer2 = document.querySelector('.news-wrap .row');
+        this.alertContainer = document.querySelector('.news-wrap .row');
     }
 
     /**
      * @desc Creates alert message and delete since 3 sec
      */
-
     showAlert() {
-        this.newsContainer2.insertAdjacentHTML("afterbegin",
-            ` <div class="card-panel teal lighten-2">Wow try again, news not found!</div>`);
+        //this.alert = this.markup();
+        this.alertContainer.insertAdjacentHTML("afterbegin", this.markup())
+        this.delete();
+    }
+
+    /**
+     * @desc markup Error template
+     */
+    markup() {
+        return `
+             <div class="card-panel teal lighten-2">Wow try again, news not found!</div>`;
+    }
+
+    /**
+     * @desc delete markup from page 
+     */
+    delete() {
         setTimeout(function () {
             let firstElem = document.querySelector(".card-panel");
             if (firstElem) {
-                alertContainer.removeChild(firstElem);
+                this.alertContainer.removeChild(firstElem); //this.alertContainer теряется контекст при вызову в фции  и потому bind на таймер
             }
-        }, 3000);
+        }.bind(this), 1000);
     }
 }
